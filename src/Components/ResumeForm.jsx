@@ -9,6 +9,7 @@ function ResumeForm({ saveResume }) {
   const [heading, setHeading] = useState({});
   const [education, setEducation] = useState([]);
   const [experience, setExperience] = useState([]);
+  const [experiencePoints, setExperiencePoints] = useState([]);
   const [projects, setProjects] = useState([]);
   const [skills, setSkills] = useState([]);
 
@@ -16,6 +17,12 @@ function ResumeForm({ saveResume }) {
     <>
       <ResumeHeading heading={heading} saveHeading={setHeading} />
       <ResumeEducation education={education} saveEducation={setEducation} />
+      <ResumeExperience
+        experience={experience}
+        saveExperience={setExperience}
+        experiencePoints={experiencePoints}
+        saveExperiencePoints={setExperiencePoints}
+      />
     </>
   );
 }

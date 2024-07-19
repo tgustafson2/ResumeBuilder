@@ -9,9 +9,7 @@ import "./App.css";
 //    Name, contact information, links
 // Education
 //    Each school name, location, dates attended, degree information
-// Experience
-//    Title, company, technologies, dates
-//    Description bullet points
+
 // Projects
 //    Project title, technologies, dates
 //    Description bullet points
