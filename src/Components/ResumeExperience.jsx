@@ -13,7 +13,7 @@ function ResumeExperience({
   function updateExperience(newVal, newKey, expKey) {
     saveExperience(
       experience.map((work) => {
-        if (work.key === currKey) {
+        if (work.key === expKey) {
           return { ...work, [newKey]: newVal };
         } else {
           return work;
@@ -91,7 +91,6 @@ function ResumeExperience({
             <ul>
               {experiencePoints
                 .filter((exp) => {
-                  console.log(exp.parentKey === work.key);
                   return exp.parentKey === work.key;
                 })
                 .map((exp) => {

@@ -4,7 +4,7 @@ function ResumeEducation({ education, saveEducation }) {
   function updateSchool(newVal, newKey, schoolKey) {
     saveEducation(
       education.map((school) => {
-        if (school.key === currKey) {
+        if (school.key === schoolKey) {
           return { ...school, [newKey]: newVal };
         } else {
           return school;

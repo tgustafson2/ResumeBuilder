@@ -11,8 +11,17 @@ function ResumeForm({ saveResume }) {
   const [experience, setExperience] = useState([]);
   const [experiencePoints, setExperiencePoints] = useState([]);
   const [projects, setProjects] = useState([]);
+  const [projectPoints, setProjectPoints] = useState([]);
   const [skills, setSkills] = useState([]);
-
+  function outputResume(){
+    console.log(heading);
+    console.log(education);
+    console.log(experience);
+    console.log(experiencePoints);
+    console.log(projects);
+    console.log(projectPoints);
+    console.log(skills);
+  }
   return (
     <>
       <ResumeHeading heading={heading} saveHeading={setHeading} />
@@ -23,6 +32,14 @@ function ResumeForm({ saveResume }) {
         experiencePoints={experiencePoints}
         saveExperiencePoints={setExperiencePoints}
       />
+      <ResumeProjects
+        projects={projects}
+        saveProjects={setProjects}
+        projectPoints={projectPoints}
+        saveProjectPoints={setProjectPoints}
+      />
+      <ResumeSkills skills={skills} saveSkills={setSkills} />
+      <button onClick={() => outputResume()}>Build Resume</button>
     </>
   );
 }
