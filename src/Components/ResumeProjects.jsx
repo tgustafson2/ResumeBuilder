@@ -10,7 +10,7 @@ function ResumeProjects({
   saveProjectPoints,
 }) {
   function updateProject(newVal, newKey, projKey) {
-    saveProject(
+    saveProjects(
       projects.map((project) => {
         if (project.key === projKey) {
           return { ...project, [newKey]: newVal };
@@ -90,7 +90,7 @@ function ResumeProjects({
                         type="textarea"
                         name="project-points"
                         onChange={(e) => {
-                          updateProjectPoints(e.target.value, exp.key);
+                          updateProjectPoints(e.target.value, point.key);
                         }}
                       />
                     </li>

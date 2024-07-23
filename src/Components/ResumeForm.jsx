@@ -5,7 +5,7 @@ import ResumeExperience from "./ResumeExperience";
 import ResumeProjects from "./ResumeProjects";
 import ResumeSkills from "./ResumeSkills";
 
-function ResumeForm({ saveResume }) {
+function ResumeForm({ saveResume, showResume }) {
   const [heading, setHeading] = useState({});
   const [education, setEducation] = useState([]);
   const [experience, setExperience] = useState([]);
@@ -14,13 +14,12 @@ function ResumeForm({ saveResume }) {
   const [projectPoints, setProjectPoints] = useState([]);
   const [skills, setSkills] = useState([]);
   function outputResume(){
-    console.log(heading);
-    console.log(education);
-    console.log(experience);
-    console.log(experiencePoints);
+    console.log("Projects")
     console.log(projects);
     console.log(projectPoints);
     console.log(skills);
+    saveResume({heading, education, experience, experiencePoints, projects, projectPoints, skills})
+    showResume(true);
   }
   return (
     <>

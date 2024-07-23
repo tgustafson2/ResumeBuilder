@@ -18,10 +18,11 @@ import "./App.css";
 
 function App() {
   const [resume, setResume] = useState({});
+  const [showStatus, setShowStatus] = useState(false);
   return (
     <>
-      <ResumeForm saveResume={(newResume) => setResume(newResume)} />
-      <ResumeResult resumeObj={JSON.parse(JSON.stringify(resume))}/>
+      <ResumeForm saveResume = {setResume} showResume = {setShowStatus} />
+      {showStatus && <ResumeResult resumeObj={resume} />}
     </>
   );
 }
