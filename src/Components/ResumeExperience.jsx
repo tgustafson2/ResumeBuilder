@@ -78,10 +78,10 @@ function ResumeExperience({
                 }}
               />
             </label>
-            <label>
+            <label className="center-input">
               Techonologies
               <input
-                type="textarea"
+                type="text"
                 name="technologies"
                 onChange={(e) => {
                   updateExperience(e.target.value, "technologies", work.key);
@@ -92,12 +92,16 @@ function ResumeExperience({
               {experiencePoints
                 .filter((exp) => {
                   return exp.parentKey === work.key;
+                }).length > 0 && <label>Job Points</label>}
+              {experiencePoints
+                .filter((exp) => {
+                  return exp.parentKey === work.key;
                 })
                 .map((exp) => {
                   return (
                     <li key={exp.key}>
                       <input
-                        type="textarea"
+                        type="text"
                         name="experience-points"
                         onChange={(e) => {
                           updateExpPoints(e.target.value, exp.key);

@@ -20,8 +20,12 @@ function App() {
   const [resume, setResume] = useState({});
   const [showStatus, setShowStatus] = useState(false);
   return (
-    <>
-      <ResumeForm saveResume = {setResume} showResume = {setShowStatus} />
+    <> 
+      <div className="hide-on-save">
+        <h1>Create Your Resume</h1>
+        <p id="instructions">Input your resume details, then click build resume to generate an output. To save resume print and save as pdf.</p>
+        <ResumeForm saveResume = {setResume} showResume = {setShowStatus} />
+      </div>
       {showStatus && <ResumeResult resumeObj={resume} />}
     </>
   );

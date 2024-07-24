@@ -3,7 +3,7 @@ import { useState } from "react";
 function ResumeHeading({ heading, saveHeading }) {
   return (
     <>
-      <h2>Personal Inforamtion</h2>
+      <h2>Personal Information</h2>
       <form>
         <label>
           Name

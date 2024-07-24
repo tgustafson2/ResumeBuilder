@@ -58,7 +58,7 @@ function ResumeEducation({ education, saveEducation }) {
                 }}
               />
             </label>
-            <label>
+            <label className="center-input">
               Degree Information
               <input
                 type="text"

@@ -49,6 +49,16 @@ function ResumeProjects({
               />
             </label>
             <label>
+              Techonologies
+              <input
+                type="text"
+                name="technologies"
+                onChange={(e) => {
+                  updateProject(e.target.value, "technologies", project.key);
+                }}
+              />
+            </label>
+            <label>
               Start Date
               <input
                 type="date"
@@ -68,17 +78,12 @@ function ResumeProjects({
                 }}
               />
             </label>
-            <label>
-              Techonologies
-              <input
-                type="textarea"
-                name="technologies"
-                onChange={(e) => {
-                  updateProject(e.target.value, "technologies", project.key);
-                }}
-              />
-            </label>
+            
             <ul>
+            {projectPoints
+                .filter((point) => {
+                  return point.parentKey === project.key;
+                }).length > 0 && <label>Project Points</label>}
               {projectPoints
                 .filter((point) => {
                   return point.parentKey === project.key;
@@ -87,7 +92,7 @@ function ResumeProjects({
                   return (
                     <li key={point.key}>
                       <input
-                        type="textarea"
+                        type="text"
                         name="project-points"
                         onChange={(e) => {
                           updateProjectPoints(e.target.value, point.key);
