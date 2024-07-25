@@ -1,55 +1,104 @@
 import { useState } from "react";
 
-function ResumeResult({ resumeObj }) {
+function Email({ email }) {
+  if (email && email.length > 0) {
+    return (
+      <>
+        | <a href={`mailto:${email}`}>Email</a>{" "}
+      </>
+    );
+  } else {
+    return <></>;
+  }
+}
+
+function LinkedIn({ linkedin }) {
+  if (linkedin && linkedin.length > 0) {
+    return (
+      <>
+        | <a href={linkedin}>LinkedIn</a>{" "}
+      </>
+    );
+  }
+}
+
+function Github({ github }) {
+  if (github && github.length > 0) {
+    return (
+      <>
+        | <a href={github}>Github</a>{" "}
+      </>
+    );
+  } else {
+    return <></>;
+  }
+}
+
+function Portfolio({ portfolio }) {
+  if (portfolio && portfolio.length > 0) {
+    return (
+      <>
+        | <a href={portfolio}>Portfolio</a>{" "}
+      </>
+    );
+  } else {
+    return <></>;
+  }
+}
+
+function Education({ education }) {
   return (
-    <div className="container">
-      <h1>{resumeObj.heading.name}</h1>
-      <div className="contact-info">
-        <p>
-          {resumeObj.heading.phone} |
-          <a href={`mailto:${resumeObj.heading.email}`}>Email</a> |
-          <a href={resumeObj.heading.linkedin}>LinkedIn</a>|
-          <a href={resumeObj.heading.github}>Github</a> |
-          <a href={resumeObj.heading.portfolio}>Portfolio</a>
-        </p>
-      </div>
-      {resumeObj.education.length > 0 && (
+    <>
+      {education.length > 0 && (
         <section>
           <h2 className="section-title">Education</h2>
           <div className="section-content">
-            {resumeObj.education.map((school) => {
+            {education.map((school) => {
               return (
-                <p key={school.key}>
+                <div key={school.key}>
                   <strong>
                     <div className="schoolName">{school.schoolName}</div>{" "}
                     <div className="schoolLocation">
                       {school.schoolLocation}
                     </div>
                   </strong>
-                  <br />
-                  {school.degreeInfo}
-                  <br />
-                  {school.startDate} - {school.endDate}
-                </p>
+                  
+                  <div className="row-grouping">
+                    <div className="info">{school.degreeInfo}</div>
+                    <div className="dates">{school.startDate} - {school.endDate}</div>
+                  </div>
+                </div>
               );
             })}
           </div>
         </section>
       )}
-      {resumeObj.experience.length > 0 && (
+    </>
+  );
+}
+function Experience({ experience, experiencePoints }) {
+  return (
+    <>
+      {experience.length > 0 && (
         <section>
           <h2 className="section-title">Experience</h2>
           <div className="section-content">
-            {resumeObj.experience.map((exp) => {
+            {experience.map((exp) => {
               return (
                 <div key={exp.key}>
-                  <p>
-                    <strong>{exp.title}</strong>
-                    <br /> <em>{exp.technologies}</em>
-                    <br /> {exp.startDate} {exp.endDate && <>- {exp.endDate}</>}
-                  </p>
+                  <div>
+                    <div className="row-grouping">
+                      <strong>{exp.company}</strong>
+                      <div className="dates">{exp.startDate} {exp.endDate && <>- {exp.endDate}</>}</div>
+                    </div>
+                    <div className="row-grouping">
+                      <strong>{exp.title}</strong>
+                      <em>{exp.technologies}</em>
+                    </div>
+                    
+                  </div>
                   <ul>
-                    {resumeObj.experiencePoints
+                    {experiencePoints
                       .filter((expPoints) => expPoints.parentKey === exp.key)
                       .map((expPoints) => {
                         return <li key={expPoints.key}>{expPoints.points}</li>;
@@ -61,36 +110,51 @@ function ResumeResult({ resumeObj }) {
           </div>
         </section>
       )}
-      {resumeObj.projects.length > 0 && (
+    </>
+  );
+}
+function Projects({ projects, projectPoints }) {
+  return (
+    <>
+      {projects.length > 0 && (
         <section>
           <h2 className="section-title">Projects</h2>
           <div className="section-content"></div>
-          {resumeObj.projects.map((project) => {
-            return(
+          {projects.map((project) => {
+            return (
               <div key={project.key}>
                 <p>
-                    <strong>{project.title}</strong>
-                    <br /> <em>{project.technologies}</em>
-                    <br /> {project.startDate} {project.endDate && <>- {project.endDate}</>}
-                  </p>
-                  <ul>
-                    {resumeObj.projectPoints
-                      .filter((projPoints) => projPoints.parentKey === project.key)
-                      .map((projPoints) => {
-                        return <li key={projPoints.key}>{projPoints.points}</li>;
-                      })}
-                  </ul>
+                  <strong>{project.title}</strong>
+                  <br /> <em>{project.technologies}</em>
+                  <br /> {project.startDate}{" "}
+                  {project.endDate && <>- {project.endDate}</>}
+                </p>
+                <ul>
+                  {projectPoints
+                    .filter(
+                      (projPoints) => projPoints.parentKey === project.key
+                    )
+                    .map((projPoints) => {
+                      return <li key={projPoints.key}>{projPoints.points}</li>;
+                    })}
+                </ul>
               </div>
-            )
+            );
           })}
         </section>
       )}
-      {resumeObj.skills.length > 0 && (
+    </>
+  );
+}
+function Skills({ skills }) {
+  return (
+    <>
+      {skills.length > 0 && (
         <section>
           <h2 className="section-title">Technical Skills</h2>
           <div className="section-content">
             <ul>
-              {resumeObj.skills.map((skill) => {
+              {skills.map((skill) => {
                 return (
                   <li key={skill.key}>
                     <strong>{skill.skillCategory}:</strong>
@@ -102,6 +166,33 @@ function ResumeResult({ resumeObj }) {
           </div>
         </section>
       )}
+    </>
+  );
+}
+
+function ResumeResult({ resumeObj }) {
+  return (
+    <div className="container">
+      <h1>{resumeObj.heading.name}</h1>
+      <div className="contact-info">
+        <p>
+          {resumeObj.heading.phone + " "}
+          {<Email email={resumeObj.heading.email} />}
+          {<LinkedIn linkedin={resumeObj.heading.linkedin} />}
+          {<Github github={resumeObj.heading.github} />}
+          {<Portfolio portfolio={resumeObj.heading.portfolio} />}
+        </p>
+      </div>
+      <Education education={resumeObj.education} />
+      <Experience
+        experience={resumeObj.experience}
+        experiencePoints={resumeObj.experiencePoints}
+      />
+      <Projects
+        projects={resumeObj.projects}
+        projectPoints={resumeObj.projectPoints}
+      />
+      <Skills skills={resumeObj.skills} />
     </div>
   );
 }

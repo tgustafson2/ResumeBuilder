@@ -14,10 +14,10 @@ function ResumeForm({ saveResume, showResume }) {
   const [projectPoints, setProjectPoints] = useState([]);
   const [skills, setSkills] = useState([]);
   function outputResume(){
-    console.log("Projects")
-    console.log(projects);
-    console.log(projectPoints);
-    console.log(skills);
+    if(!heading.name || heading.name<=0 ){
+      alert("Name is required for resume");
+      return;
+    } 
     saveResume({heading, education, experience, experiencePoints, projects, projectPoints, skills})
     showResume(true);
   }
