@@ -11,6 +11,7 @@ function ResumeHeading({ heading, saveHeading }) {
             name="name-input"
             type="text"
             onChange={(e) => saveHeading({ ...heading, name: e.target.value })}
+            value={heading.name}
           ></input>
         </label>
         <label>
@@ -19,6 +20,7 @@ function ResumeHeading({ heading, saveHeading }) {
             name="phone-input"
             type="tel"
             onChange={(e) => saveHeading({ ...heading, phone: e.target.value })}
+            value={heading.phone}
           ></input>
         </label>
         <label>
@@ -27,6 +29,7 @@ function ResumeHeading({ heading, saveHeading }) {
             name="email-input"
             type="email"
             onChange={(e) => saveHeading({ ...heading, email: e.target.value })}
+            value={heading.email}
           ></input>
         </label>
         <label>
@@ -37,6 +40,7 @@ function ResumeHeading({ heading, saveHeading }) {
             onChange={(e) =>
               saveHeading({ ...heading, github: e.target.value })
             }
+            value={heading.github}
           ></input>
         </label>
         <label>
@@ -47,6 +51,7 @@ function ResumeHeading({ heading, saveHeading }) {
             onChange={(e) =>
               saveHeading({ ...heading, portfolio: e.target.value })
             }
+            value={heading.portfolio}
           ></input>
         </label>
         <label>
@@ -57,6 +62,7 @@ function ResumeHeading({ heading, saveHeading }) {
             onChange={(e) =>
               saveHeading({ ...heading, linkedin: e.target.value })
             }
+            value={heading.linkedin}
           ></input>
         </label>
       </form>

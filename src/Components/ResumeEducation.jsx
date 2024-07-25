@@ -26,6 +26,7 @@ function ResumeEducation({ education, saveEducation }) {
                 onChange={(e) => {
                   updateSchool(e.target.value, "schoolName", school.key);
                 }}
+                value={school.schoolName}
               />
             </label>
             <label>
@@ -36,6 +37,7 @@ function ResumeEducation({ education, saveEducation }) {
                 onChange={(e) => {
                   updateSchool(e.target.value, "schoolLocation", school.key);
                 }}
+                value={school.schoolLocation}
               />
             </label>
             <label>
@@ -46,6 +48,7 @@ function ResumeEducation({ education, saveEducation }) {
                 onChange={(e) => {
                   updateSchool(e.target.value, "startDate", school.key);
                 }}
+                value={school.startDate}
               />
             </label>
             <label>
@@ -56,6 +59,7 @@ function ResumeEducation({ education, saveEducation }) {
                 onChange={(e) => {
                   updateSchool(e.target.value, "endDate", school.key);
                 }}
+                value={school.endDate}
               />
             </label>
             <label className="center-input">
@@ -66,6 +70,7 @@ function ResumeEducation({ education, saveEducation }) {
                 onChange={(e) => {
                   updateSchool(e.target.value, "degreeInfo", school.key);
                 }}
+                value={school.degreeInfo}
               />
             </label>
           </div>

@@ -46,6 +46,7 @@ function ResumeProjects({
                 onChange={(e) => {
                   updateProject(e.target.value, "title", project.key);
                 }}
+                value={project.title}
               />
             </label>
             <label>
@@ -56,6 +57,7 @@ function ResumeProjects({
                 onChange={(e) => {
                   updateProject(e.target.value, "technologies", project.key);
                 }}
+                value={project.technologies}
               />
             </label>
             <label>
@@ -66,6 +68,7 @@ function ResumeProjects({
                 onChange={(e) => {
                   updateProject(e.target.value, "startDate", project.key);
                 }}
+                value={project.startDate}
               />
             </label>
             <label>
@@ -76,6 +79,7 @@ function ResumeProjects({
                 onChange={(e) => {
                   updateProject(e.target.value, "endDate", project.key);
                 }}
+                value={project.endDate}
               />
             </label>
             
@@ -97,6 +101,7 @@ function ResumeProjects({
                         onChange={(e) => {
                           updateProjectPoints(e.target.value, point.key);
                         }}
+                        value={point.points}
                       />
                     </li>
                   );

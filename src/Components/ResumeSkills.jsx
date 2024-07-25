@@ -28,6 +28,7 @@ function ResumeSkills({ skills, saveSkills }) {
                   onChange={(e) => {
                     updateSkill(e.target.value, "skillCategory", skill.key);
                   }}
+                  value={skill.skillCategory}
                 />
               </label>
               <label>
@@ -38,6 +39,7 @@ function ResumeSkills({ skills, saveSkills }) {
                   onChange={(e) => {
                     updateSkill(e.target.value, "categorySkills", skill.key);
                   }}
+                  value={skill.categorySkills}
                 />
               </label>
             </div>

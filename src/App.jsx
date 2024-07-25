@@ -28,7 +28,7 @@ function App() {
           Input your resume details, then click build resume to generate an
           output. To save resume print and save as pdf.
         </p>
-        <ResumeForm saveResume={setResume} showResume={setShowStatus} />
+        <ResumeForm saveResume={setResume} showStatus={showStatus}showResume={setShowStatus} />
       </div>
       {showStatus && <ResumeResult resumeObj={resume} />}
     </>

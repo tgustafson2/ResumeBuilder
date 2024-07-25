@@ -46,6 +46,7 @@ function ResumeExperience({
                 onChange={(e) =>
                   updateExperience(e.target.value, "title", work.key)
                 }
+                value={work.title}
               />
             </label>
             <label>
@@ -56,6 +57,7 @@ function ResumeExperience({
                 onChange={(e) =>
                   updateExperience(e.target.value, "company", work.key)
                 }
+                value={work.company}
               />
             </label>
             <label>
@@ -66,6 +68,7 @@ function ResumeExperience({
                 onChange={(e) => {
                   updateExperience(e.target.value, "startDate", work.key);
                 }}
+                value={work.startDate}
               />
             </label>
             <label>
@@ -76,6 +79,7 @@ function ResumeExperience({
                 onChange={(e) => {
                   updateExperience(e.target.value, "endDate", work.key);
                 }}
+                value={work.endDate}
               />
             </label>
             <label className="center-input">
@@ -86,6 +90,7 @@ function ResumeExperience({
                 onChange={(e) => {
                   updateExperience(e.target.value, "technologies", work.key);
                 }}
+                value={work.technologies}
               />
             </label>
             <ul>
@@ -106,6 +111,7 @@ function ResumeExperience({
                         onChange={(e) => {
                           updateExpPoints(e.target.value, exp.key);
                         }}
+                        value={exp.points}
                       />
                     </li>
                   );

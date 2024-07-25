@@ -1,5 +1,11 @@
 import { useState } from "react";
 
+function formatDate(date){
+  let currDate = new Date(date);
+  let months = ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
+  return `${months[currDate.getUTCMonth()]} ${currDate.getUTCFullYear()}`;
+}
+
 function Email({ email }) {
   if (email && email.length > 0) {
     return (
@@ -65,7 +71,7 @@ function Education({ education }) {
                   
                   <div className="row-grouping">
                     <div className="info">{school.degreeInfo}</div>
-                    <div className="dates">{school.startDate} - {school.endDate}</div>
+                    <div className="dates">{formatDate(school.startDate)} { school.endDate && <>- {formatDate(school.endDate)}</>}</div>
                   </div>
                 </div>
               );
@@ -89,11 +95,12 @@ function Experience({ experience, experiencePoints }) {
                   <div>
                     <div className="row-grouping">
                       <strong>{exp.company}</strong>
-                      <div className="dates">{exp.startDate} {exp.endDate && <>- {exp.endDate}</>}</div>
+                      <em>{exp.technologies}</em>
+                      
                     </div>
                     <div className="row-grouping">
                       <strong>{exp.title}</strong>
-                      <em>{exp.technologies}</em>
+                      <div className="dates">{formatDate(exp.startDate)} {exp.endDate && <>- {formatDate(exp.endDate)}</>}</div>
                     </div>
                     
                   </div>
@@ -119,16 +126,21 @@ function Projects({ projects, projectPoints }) {
       {projects.length > 0 && (
         <section>
           <h2 className="section-title">Projects</h2>
-          <div className="section-content"></div>
-          {projects.map((project) => {
+          <div className="section-content">{projects.map((project) => {
             return (
               <div key={project.key}>
-                <p>
-                  <strong>{project.title}</strong>
-                  <br /> <em>{project.technologies}</em>
-                  <br /> {project.startDate}{" "}
-                  {project.endDate && <>- {project.endDate}</>}
-                </p>
+                <div>
+                  <div className="row-grouping">
+                    <div className="grouping">
+                      <strong>{project.title}</strong>{project.technologies && <span> | </span>}
+                      <em>{project.technologies}</em>
+                    </div>
+                    <div className="grouping">
+                      {formatDate(project.startDate)}{" "}
+                      {project.endDate && <>- {formatDate(project.endDate)}</>}
+                    </div>
+                  </div>
+                </div>
                 <ul>
                   {projectPoints
                     .filter(
@@ -140,7 +152,8 @@ function Projects({ projects, projectPoints }) {
                 </ul>
               </div>
             );
-          })}
+          })}</div>
+          
         </section>
       )}
     </>
@@ -150,14 +163,14 @@ function Skills({ skills }) {
   return (
     <>
       {skills.length > 0 && (
-        <section>
+        <section className="skill-section">
           <h2 className="section-title">Technical Skills</h2>
           <div className="section-content">
             <ul>
               {skills.map((skill) => {
                 return (
                   <li key={skill.key}>
-                    <strong>{skill.skillCategory}:</strong>
+                    <strong>{skill.skillCategory}: </strong>
                     {skill.categorySkills}
                   </li>
                 );
@@ -192,7 +205,9 @@ function ResumeResult({ resumeObj }) {
         projects={resumeObj.projects}
         projectPoints={resumeObj.projectPoints}
       />
-      <Skills skills={resumeObj.skills} />
+    
+        <Skills skills={resumeObj.skills} />
+      
     </div>
   );
 }
